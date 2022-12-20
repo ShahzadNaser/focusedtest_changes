@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include focusedtest_changes *.css
+recursive-include focusedtest_changes *.csv
+recursive-include focusedtest_changes *.html
+recursive-include focusedtest_changes *.ico
+recursive-include focusedtest_changes *.js
+recursive-include focusedtest_changes *.json
+recursive-include focusedtest_changes *.md
+recursive-include focusedtest_changes *.png
+recursive-include focusedtest_changes *.py
+recursive-include focusedtest_changes *.svg
+recursive-include focusedtest_changes *.txt
+recursive-exclude focusedtest_changes *.pyc

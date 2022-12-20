@@ -106,7 +106,7 @@ override_doctype_class = {
 
 doc_events = {
 	"Purchase Order": {
-		"on_update": "focusedtest_changes.controller.purchase_order.on_submit"
+		"on_submit": "focusedtest_changes.controller.purchase_order.on_submit"
 	}
 }
 

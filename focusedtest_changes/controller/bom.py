@@ -4,14 +4,11 @@ from frappe.utils import flt
 from erpnext.manufacturing.doctype.bom.bom import BOM
 
 class BOMCUSTOM(BOM):
-    def calculate_cost(self, save_updates=False, update_hour_rate=False):
+    def calculate_cost(self, update_hour_rate = False):
         """Calculate bom totals"""
         self.calculate_op_cost(update_hour_rate)
         self.calculate_rm_cost()
         self.calculate_sm_cost()
-        if save_updates:
-            # not via doc event, table is not regenerated and needs updation
-            self.calculate_exploded_cost()
 
         self.total_cost = self.production_cost + self.operating_cost + self.raw_material_cost - self.scrap_material_cost
         self.base_total_cost = (
@@ -36,7 +33,7 @@ class BOMCUSTOM(BOM):
                     "conversion_factor": d.conversion_factor,
                     "sourced_by_supplier": d.sourced_by_supplier,
                 }
-            )
+            ) or frappe.db.get_value("Item", d.item_code, "last_purchase_rate")
 
             
             d.rate = rate * 1.15

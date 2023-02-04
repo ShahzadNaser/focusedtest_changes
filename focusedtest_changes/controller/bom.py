@@ -7,8 +7,8 @@ class BOMCUSTOM(BOM):
     def calculate_cost(self, save_updates=False, update_hour_rate=False):
         """Calculate bom totals"""
         self.calculate_op_cost(update_hour_rate)
-        self.calculate_rm_cost(save=save_updates)
-        self.calculate_sm_cost(save=save_updates)
+        self.calculate_rm_cost()
+        self.calculate_sm_cost()
         if save_updates:
             # not via doc event, table is not regenerated and needs updation
             self.calculate_exploded_cost()
